@@ -27,7 +27,7 @@ var themSP = function() {
 
     // Khởi tạo đối tượng sản phẩm từ lớp đối tượng sản phẩm
     var sp = new SanPham(tenSP, gia, hinhAnh, moTa);
-    console.log(sp);
+    // console.log(sp);
     // Thêm sản phẩm
     sanPhamService.themSanPham(sp).then((result) => {
         layDanhSachSP();
@@ -51,18 +51,34 @@ var xoaSP = function(id) {
     });
 }
 
-var xemSP = function(id) {
+var capNhatSP = function(id) {
+    var tenSP = getEl('TenSP').value;
+    var gia = getEl('GiaSP').value;
+    var hinhAnh = getEl('HinhSP').value;
+    var moTa = getEl('moTa').value;
 
+    // Khởi tạo đối tượng sản phẩm từ lớp đối tượng sản phẩm
+    var sp = new SanPham(tenSP, gia, hinhAnh, moTa);
+
+    sanPhamService.capNhatSanPham(id, sp).then(function(result) {
+        layDanhSachSP();
+    }).catch(function(err) {
+        console.log(err);
+    })
+}
+
+var xemSP = function(id) {
     sanPhamService.xemSamPham(id).then(function(result) {
         console.log(result);
+        var sp = result.data;
         getEl('btnThemSP').click();
         // $('#myModal').modal('show');
-        getEl('TenSP').value = result.data.tenSP;
-        getEl('GiaSP').value = result.data.gia;
-        getEl('HinhSP').value = result.data.hinhAnh;
-        getEl('moTa').value = result.data.moTa;
+        getEl('TenSP').value = sp.tenSP;
+        getEl('GiaSP').value = sp.gia;
+        getEl('HinhSP').value = sp.hinhAnh;
+        getEl('moTa').value = sp.moTa;
         modalTitle.innerHTML = 'Cập nhật sản phẩm';
-        modalFooter.innerHTML = `<buttuon class ="btn btn-success"> Câp nhật sản phẩm </button>`
+        modalFooter.innerHTML = `<buttuon class ="btn btn-success" onclick="capNhatSP('${sp.id}')"> Câp nhật sản phẩm </button>`
     }).catch(function(err) {
         console.log(err);
     });
