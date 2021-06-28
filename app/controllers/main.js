@@ -17,8 +17,8 @@ function renderTable(mangSP) {
                 </td>
                 <td>${sp.moTa}</td>
                 <td>
-                    <button class="btn btn-info">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-info">Xem</button>
+                    <button class="btn btn-danger">Xóa</button>
                 </td>
             </tr>
         `
