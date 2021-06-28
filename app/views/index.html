@@ -72,6 +72,7 @@
                 <input
                   type="text"
                   class="form-control"
+                  id="ipTimKiem"
                   placeholder="Nhập từ khóa"
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
@@ -121,34 +122,36 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-              <div class="form-group">
-                <label>Tên Sản Phẩm</label>
-                <input
-                  id="TenSP"
-                  class="form-control"
-                  placeholder="Nhập vào tên sản phẩm"
-                />
-              </div>
-              <div class="form-group">
-                <label>Giá</label>
-                <input
-                  id="GiaSP"
-                  class="form-control"
-                  placeholder="Nhập vào giá"
-                />
-              </div>             
-              <div class="form-group">
-                <label>Hình Ảnh</label>
-                <input
-                  id="HinhSP"
-                  class="form-control"
-                  placeholder="Nhập vào hình sản phẩm"
-                />
-              </div>
-              <div class="form-group">
-                <label for="">Mô tả sản phẩm: </label>
-                <textarea class="form-control" name="" id="moTa" cols="30" rows="3" placeholder="Nhập mô tả SP"></textarea>
-              </div>
+              <form id="formSP">
+                <div class="form-group">
+                  <label>Tên Sản Phẩm</label>
+                  <input
+                    id="TenSP"
+                    class="form-control"
+                    placeholder="Nhập vào tên sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Giá</label>
+                  <input
+                    id="GiaSP"
+                    class="form-control"
+                    placeholder="Nhập vào giá"
+                  />
+                </div>             
+                <div class="form-group">
+                  <label>Hình Ảnh</label>
+                  <input
+                    id="HinhSP"
+                    class="form-control"
+                    placeholder="Nhập vào hình sản phẩm"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">Mô tả sản phẩm: </label>
+                  <textarea class="form-control" name="" id="moTa" cols="30" rows="3" placeholder="Nhập mô tả SP"></textarea>
+                </div>
+              </form>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">

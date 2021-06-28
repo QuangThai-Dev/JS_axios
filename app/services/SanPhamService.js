@@ -43,4 +43,9 @@ function SanPhamService() {
             data: sp
         })
     }
+    this.timKiemSP = function(dssp, chuoiTK) {
+        return dssp.filter(function(sp) {
+            return sp.tenSP.toLowerCase().indexOf(chuoiTK.toLowerCase()) !== -1;
+        })
+    }
 }

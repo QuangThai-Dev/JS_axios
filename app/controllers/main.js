@@ -18,7 +18,15 @@ var layDanhSachSP = function() {
 }
 layDanhSachSP();
 
+var xoaForm = function() {
+    getEl('TenSP').value = '';
+    getEl('GiaSP').value = '';
+    getEl('HinhSP').value = '';
+    getEl('moTa').value = '';
+}
+
 var themSP = function() {
+
     // Lấy thông tin sản phẩm
     var tenSP = getEl('TenSP').value;
     var gia = getEl('GiaSP').value;
@@ -39,6 +47,9 @@ var themSP = function() {
 var modalFooter = document.querySelector('.modal-footer');
 var modalTitle = document.querySelector('.modal-title');
 getEl('btnThemSP').addEventListener('click', function() {
+    // Clear data trên form sau khi cập nhật
+    // getEl('formSP').reset();
+    xoaForm();
     modalTitle.innerHTML = 'Thêm sản phẩm';
     modalFooter.innerHTML = `<buttuon class ="btn btn-success" onclick = "themSP()" > Thêm sản phẩm </button>`
 })
@@ -62,6 +73,9 @@ var capNhatSP = function(id) {
 
     sanPhamService.capNhatSanPham(id, sp).then(function(result) {
         layDanhSachSP();
+        // sau khi cập nhật thành công ẩn modal
+        document.querySelector('#myModal .close').click();
+
     }).catch(function(err) {
         console.log(err);
     })
@@ -106,7 +120,12 @@ function renderTable(mangSP) {
     getEl('tblDanhSachSP').innerHTML = content;
 }
 
-
+getEl('ipTimKiem').addEventListener('keyup', function() {
+    var mangSP = getLocalStorage();
+    var chuoiTK = getEl('ipTimKiem').value;
+    var mangTK = sanPhamService.timKiemSP(mangSP, chuoiTK);
+    renderTable(mangTK);
+})
 
 function setLocalStorage(dssp) {
     localStorage.setItem('DSSP', JSON.stringify(dssp));
